@@ -27,9 +27,9 @@ Conviene no confundir dos cosas:
 
 Un punto en el marco A se escribe como una combinación de los ejes de A:
 
-$$
+```math
 {}^{A}p = p_x\,\hat{x}_A + p_y\,\hat{y}_A
-$$
+```
 
 Cada coeficiente es una componente **distinta**: $p_x$ es cuánto se avanza en x, $p_y$ cuánto se avanza en y. Un error frecuente es usar el mismo número para los dos; si $p_x = p_y$ siempre, el punto quedaría pegado a la diagonal, y ese no es el caso general.
 
@@ -42,9 +42,9 @@ Aquí está el corazón del tema. Para pasar un punto escrito en B hacia A hacen
 
 En una frase: es una *suma vectorial* después de un *cambio de perspectiva*. La fórmula completa es:
 
-$$
+```math
 \underbrace{{}^{A}p}_{\text{punto en A}} = \underbrace{{}^{A}R_B}_{\text{rota B}\to\text{A}} \cdot \underbrace{{}^{B}p}_{\text{punto en B}} + \underbrace{{}^{A}t_B}_{\text{dónde está B}}
-$$
+```
 
 - ${}^{A}R_B$ se encarga de la **orientación**.
 - ${}^{A}t_B$ se encarga de la **posición**.
@@ -53,7 +53,7 @@ La Figura 1 muestra los dos marcos y cómo un mismo punto P se describe desde ca
 
 ![Dos marcos A y B, con B rotado y trasladado, y el punto P visto desde ambos](fig/dos-marcos-traslacion.svg)
 
-*Figura 1. El marco B está rotado un ángulo θ y trasladado un vector **t** respecto a A. El punto P tiene dos descripciones del mismo lugar: ${}^{B}p$ (rojo, medido desde B) y ${}^{A}p$ (azul, medido desde A).*
+*Figura 1. El marco B está rotado un ángulo θ y trasladado un vector **t** respecto a A. El punto P tiene dos descripciones del mismo lugar: ᴮp (rojo, medido desde B) y ᴬp (azul, medido desde A).*
 
 Leyendo la figura: para llegar a P desde A, primero se va hasta el origen de B siguiendo **t**, y desde ahí se sigue ${}^{B}p$, pero interpretado con los ejes girados de B. Esa es, dibujada, la fórmula ${}^{A}p = {}^{A}R_B \cdot {}^{B}p + {}^{A}t_B$.
 
@@ -73,25 +73,25 @@ Leyendo la figura: para llegar a P desde A, primero se va hasta el origen de B s
 
 **Caso 1:** ${}^{B}p = (1, 0)$
 
-$$
+```math
 1\cdot\hat{x}_B + 0\cdot\hat{y}_B = 1\cdot(0,1) = (0, 1)
-$$
+```
 
 Se suma el origen de B:
 
-$$
+```math
 {}^{A}p = (0, 1) + (2, 1) = (2, 2)
-$$
+```
 
 **Caso 2:** ${}^{B}p = (1, 1)$ (aquí sí entra el menos de $\hat{y}_B$)
 
-$$
+```math
 1\cdot(0,1) + 1\cdot(-1,0) = (-1, 1)
-$$
+```
 
-$$
+```math
 {}^{A}p = (-1, 1) + (2, 1) = (1, 2)
-$$
+```
 
 ## La matriz de rotación: qué es y cómo se arma
 
@@ -99,25 +99,25 @@ La matriz ${}^{A}R_B$ no es magia: es solo un casillero donde se guardan los eje
 
 **Paso 1 — un vector se escribe "parado" (como columna):** el primer número arriba, el segundo abajo.
 
-$$
+```math
 \hat{x}_B = (0, 1) \;\longrightarrow\; \begin{bmatrix} 0 \\ 1 \end{bmatrix} \qquad \hat{y}_B = (-1, 0) \;\longrightarrow\; \begin{bmatrix} -1 \\ 0 \end{bmatrix}
-$$
+```
 
 **Paso 2 — se ponen las dos columnas lado a lado** ($\hat{x}_B$ primero):
 
-$$
+```math
 {}^{A}R_B = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}
-$$
+```
 
 **Cómo leer cada casilla** (fila, columna):
 
-$$
+```math
 \begin{array}{c|cc}
  & \hat{x}_B & \hat{y}_B \\ \hline
 \hat{x}_A & 0 & -1 \\
 \hat{y}_A & 1 & 0
 \end{array}
-$$
+```
 
 - **Columna** = de qué eje de B se habla (1ª columna = $\hat{x}_B$, 2ª = $\hat{y}_B$).
 - **Fila** = qué componente se lee (1ª fila = cuánto en x de A, 2ª = cuánto en y de A).
@@ -128,33 +128,33 @@ Un ejemplo de lectura: la casilla (fila 2, columna 1) $= 1$ significa "el eje $\
 
 ${}^{A}t_B$ es simplemente dónde está el origen de B, visto desde A:
 
-$$
+```math
 {}^{A}t_B = \begin{bmatrix} 2 \\ 1 \end{bmatrix}
-$$
+```
 
 ## La fórmula completa, aplicada
 
 Con ${}^{B}p = (1,1)$, multiplicar matriz por vector significa **"1 vez la primera columna + 1 vez la segunda columna"**:
 
-$$
+```math
 {}^{A}R_B \cdot {}^{B}p = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}\begin{bmatrix} 1 \\ 1 \end{bmatrix} = 1\cdot\begin{bmatrix} 0 \\ 1 \end{bmatrix} + 1\cdot\begin{bmatrix} -1 \\ 0 \end{bmatrix} = \begin{bmatrix} -1 \\ 1 \end{bmatrix}
-$$
+```
 
-Es el mismo $(-1, 1)$ obtenido a mano. La matriz solo ordenó la cuenta "$1\cdot\hat{x}_B + 1\cdot\hat{y}_B$". Luego se suma la traslación:
+Es el mismo $(-1, 1)$ obtenido a mano. La matriz solo ordenó la cuenta 1·x̂_B + 1·ŷ_B. Luego se suma la traslación:
 
-$$
+```math
 {}^{A}p = \begin{bmatrix} -1 \\ 1 \end{bmatrix} + \begin{bmatrix} 2 \\ 1 \end{bmatrix} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}
-$$
+```
 
 ## Leer una matriz de rotación (práctica al revés)
 
-Dada una matriz, se leen sus columnas para saber hacia dónde apunta cada eje de B y cuánto giró:
+Dada una matriz, se leen sus columnas para saber hacia dónde apunta cada eje de B y cuánto giró (las matrices van en notación de MATLAB, donde `;` separa filas):
 
-| Matriz | $\hat{x}_B$ | $\hat{y}_B$ | Giro |
+| Matriz | x̂_B | ŷ_B | Giro |
 |---|---|---|---|
-| $\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ | $\hat{x}_A$ | $\hat{y}_A$ | 0° (sin rotar) |
-| $\begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}$ | $-\hat{y}_A$ | $\hat{x}_A$ | 90° horario |
-| $\begin{bmatrix} -1 & 0 \\ 0 & -1 \end{bmatrix}$ | $-\hat{x}_A$ | $-\hat{y}_A$ | 180° |
+| `[1 0; 0 1]` | x̂_A | ŷ_A | 0° (sin rotar) |
+| `[0 1; -1 0]` | −ŷ_A | x̂_A | 90° horario |
+| `[-1 0; 0 -1]` | −x̂_A | −ŷ_A | 180° |
 
 ## Rotación 2D para un ángulo cualquiera θ
 
@@ -176,9 +176,9 @@ La Figura 2 responde las dos preguntas con un triángulo rectángulo.
 - cateto horizontal (proyección sobre $x_A$) = $\cos\theta$
 - cateto vertical (proyección sobre $y_A$) = $\sin\theta$
 
-$$
+```math
 \hat{x}_B = \cos\theta\,\hat{x}_A + \sin\theta\,\hat{y}_A = (\cos\theta,\ \sin\theta)
-$$
+```
 
 **Deducción de $\hat{y}_B$.** $\hat{y}_B$ es perpendicular a $\hat{x}_B$, 90° más adelante. Dos caminos, mismo resultado:
 
@@ -187,13 +187,19 @@ $$
 
 **Se arma la matriz** con $\hat{x}_B$ y $\hat{y}_B$ como columnas:
 
-$$
+```math
 R(\theta) = \begin{bmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{bmatrix}
-$$
+```
 
 Primera columna = $\hat{x}_B$, segunda = $\hat{y}_B$. Mismo criterio que con el de 90°, solo que ahora los números son cos y sin en vez de 0 y 1.
 
-**Chequeo de cierre (θ = 90°):** $\cos 90° = 0$, $\sin 90° = 1$, entonces $R(90°) = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}$, que es exactamente la matriz armada a mano con el dibujo. El caso particular y la fórmula general concuerdan.
+**Chequeo de cierre (θ = 90°):** con cos 90° = 0 y sin 90° = 1, la fórmula da
+
+```math
+R(90^\circ) = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}
+```
+
+que es exactamente la matriz armada a mano con el dibujo. El caso particular y la fórmula general concuerdan.
 
 ## Qué significa (qué implica) la matriz de rotación
 
@@ -203,9 +209,9 @@ R se puede leer de dos maneras, y las dos son ciertas al mismo tiempo:
 
 **Lectura 2 — es una "máquina" que traduce coordenadas.** Al multiplicar R por un punto dado en B, devuelve ese **mismo punto físico** pero medido en A:
 
-$$
+```math
 {}^{A}p = R \cdot {}^{B}p
-$$
+```
 
 - Entra: "tanto sobre $\hat{x}_B$, tanto sobre $\hat{y}_B$".
 - Sale: "tanto sobre $\hat{x}_A$, tanto sobre $\hat{y}_A$".
