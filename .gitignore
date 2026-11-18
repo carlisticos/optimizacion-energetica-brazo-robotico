@@ -1,0 +1,12 @@
+# MATLAB / Simulink
+*.asv
+*.autosave
+*.mex*
+slprj/
+*.slxc
+*.slx.r*
+*.mat
+
+# Sistema
+.DS_Store
+Thumbs.db
